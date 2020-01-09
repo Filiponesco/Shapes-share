@@ -12,7 +12,7 @@
     container.addEventListener("mouseup", dragEnd, false);
     container.addEventListener("mousemove", drag, false);
 
-    socket = io.connect('http://localhost:3000');
+    socket = io.connect('http://192.168.0.108:3000');
 
     // We make a named event called 'mouse' and write an
     // anonymous callback function
@@ -79,7 +79,7 @@
         activeItem.yOffset = activeItem.currentY;
 
         setTranslate(activeItem.currentX, activeItem.currentY, activeItem);
-        sendActualPosition(activeItem);
+        sendActualMove(activeItem);
       }
     }
 
@@ -90,8 +90,12 @@
         var el = document.getElementById(id);
         el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
     }
+    function setPositionById(xPos, yPos, id){
+      var el = document.getElementById(id);
+      el.style.position.left = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+  }
 
-    function sendActualPosition(actItem){
+    function sendActualMove(actItem){
         // We are sending!
         console.log("move: " + actItem.currentX + " " + actItem.currentY);
     
