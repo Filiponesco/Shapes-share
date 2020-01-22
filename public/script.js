@@ -12,7 +12,7 @@
     container.addEventListener("mouseup", dragEnd, false);
     container.addEventListener("mousemove", drag, false);
 
-    socket = io.connect('http://192.168.0.108:3000');
+    socket = io.connect('localhost:3000');
 
     // We make a named event called 'mouse' and write an
     // anonymous callback function
